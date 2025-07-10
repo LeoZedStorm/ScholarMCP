@@ -1,0 +1,10 @@
+# ScholarMCP Neo4j Dockerfile / Neo4j Dockerfile / Neo4j用Dockerfile
+# 使用官方Neo4j镜像 / Use official Neo4j image / 公式Neo4jイメージを使用
+
+FROM neo4j:5.12
+
+# 设置环境变量 / Set environment variables / 環境変数を設定
+ENV NEO4J_AUTH=neo4j/scholarmcp
+
+# 可选：复制插件或配置 / Optionally copy plugins or config / プラグインや設定をコピー
+# COPY ./plugins /var/lib/neo4j/plugins 

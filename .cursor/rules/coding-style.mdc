@@ -1,0 +1,18 @@
+---
+alwaysApply: true
+---
+# ScholarMCP 编码规范 / Coding Style / コーディング規約
+
+## 规则 / Rules / 規則
+
+- 遵循 SOLID、DRY、KISS 等最佳实践。
+- Follow best practices such as SOLID, DRY, KISS.
+
+- 命名应有意义，采用驼峰或帕斯卡命名法（视语言而定）。
+- Use meaningful names, camelCase or PascalCase as appropriate for the language.
+
+- 避免魔法数字、深层嵌套、未处理异常。
+- Avoid magic numbers, deep nesting, and unhandled exceptions.
+
+- 优先使用 async/await。
+- Prefer async/await.

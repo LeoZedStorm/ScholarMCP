@@ -1,0 +1,12 @@
+# ScholarMCP PostgreSQL Dockerfile / PostgreSQL Dockerfile / PostgreSQL用Dockerfile
+# 使用官方PostgreSQL镜像 / Use official PostgreSQL image / 公式PostgreSQLイメージを使用
+
+FROM postgres:15-alpine
+
+# 设置环境变量 / Set environment variables / 環境変数を設定
+ENV POSTGRES_USER=scholarmcp
+ENV POSTGRES_PASSWORD=scholarmcp
+ENV POSTGRES_DB=scholarmcp
+
+# 可选：复制初始化脚本 / Optionally copy init scripts / 初期化スクリプトをコピー
+# COPY ./init.sql /docker-entrypoint-initdb.d/ 

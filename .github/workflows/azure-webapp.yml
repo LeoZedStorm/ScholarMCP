@@ -1,0 +1,45 @@
+# ScholarMCP CI/CD Pipeline for Azure Web App
+# 遵循最佳实践 / Best Practices / ベストプラクティスに従う
+# 本文件为占位符，需根据实际 Azure 资源名和密钥调整
+
+name: Deploy ScholarMCP Backend to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ./backend/ScholarMCP.Backend/ScholarMCP.Backend.csproj
+
+      - name: Build
+        run: dotnet build ./backend/ScholarMCP.Backend/ScholarMCP.Backend.csproj --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish ./backend/ScholarMCP.Backend/ScholarMCP.Backend.csproj --configuration Release --output ./publish
+
+      # Azure Web App 部署 / Deploy to Azure Web App / Azure Web App へのデプロイ
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}         # Azure Web App 名称 / Name / 名前
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # 在GitHub Secrets中配置 / Set in GitHub Secrets / GitHub Secretsで設定
+          package: ./publish
+
+# 说明 / Notes / 注意
+# 1. 连接字符串、Neo4j等敏感信息请在 Azure Portal 的“配置”中设置环境变量。
+# 2. 不使用 .env 文件，遵循 .NET 和 Azure 推荐的配置方式。
+# 3. 如需前端或数据库自动化部署，可扩展本文件。 

@@ -1,0 +1,47 @@
+# ScholarMCP docker-compose.yml
+# 这是一个多服务配置文件 / This is a multi-service config / これはマルチサービス構成ファイルです
+
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: scholar_postgres
+    environment:
+      POSTGRES_USER: scholarmcp
+      POSTGRES_PASSWORD: scholarmcp
+      POSTGRES_DB: scholarmcp
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  neo4j:
+    image: neo4j:5.12
+    container_name: scholar_neo4j
+    environment:
+      NEO4J_AUTH: neo4j/scholarmcp
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4jdata:/data
+
+  # backend:
+  #   build:
+  #     context: ./backend/ScholarMCP.Backend
+  #   container_name: scholar_backend
+  #   environment:
+  #     ASPNETCORE_ENVIRONMENT: Development
+  #     ConnectionStrings__PostgresConnection: "Host=postgres;Port=5432;Database=scholarmcp;Username=scholarmcp;Password=scholarmcp"
+  #     Neo4j__Uri: "bolt://neo4j:7687"
+  #     Neo4j__User: "neo4j"
+  #     Neo4j__Password: "scholarmcp"
+  #   depends_on:
+  #     - postgres
+  #     - neo4j
+  #   ports:
+  #     - "5000:8080"
+
+volumes:
+  pgdata:
+  neo4jdata: 

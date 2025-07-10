@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+## 代码规范补充 / Additional Coding Rules / コーディング規約の補足
+
+- 每个函数/方法都应有对应的单元测试。
+- Every function/method should have a corresponding unit test.
+
+- 每次修改时应将任务分解为小步骤，每次只修改少量内容，自动确认无误后再继续。
+- When making changes, break tasks into small steps, modify only a small part each time, and automatically proceed only if this step there are no issues.

@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+# ScholarMCP README 规范 / README Rules / README規則
+
+## 规则 / Rules / 規則
+
+- 每个模块/服务必须包含README.md文件。
+- Every module/service must include a README.md file.
+
+- README需包含：简介、用法、API说明、安装/运行方法、许可证等。
+- README should include: introduction, usage, API description, setup/run instructions, license, etc.
+
+- 推荐多语言（中英日）文档。
+- Multilingual (Chinese, English, Japanese) documentation is recommended.

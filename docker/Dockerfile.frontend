@@ -1,0 +1,9 @@
+# ScholarMCP 前端 Dockerfile / Frontend Dockerfile / フロントエンド用Dockerfile
+# 这是一个占位文件 / This is a placeholder / これはプレースホルダーです
+
+# FROM node:18-alpine
+# WORKDIR /app
+# COPY . .
+# RUN npm install
+# EXPOSE 3000
+# CMD ["npm", "run", "dev"] 

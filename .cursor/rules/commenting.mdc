@@ -1,0 +1,18 @@
+---
+alwaysApply: true
+---
+# ScholarMCP 注释规范 / Commenting Rules / コメント規則
+
+## 规则 / Rules / 規則
+
+- 所有函数、类、公共方法必须有结构化注释（如C# XML、JSDoc等）。
+- All functions, classes, and public methods must have structured comments (e.g., C# XML, JSDoc).
+
+- 注释需简明、准确，避免冗余。
+- Comments should be concise and accurate, avoiding redundancy.
+
+- 注释需包含参数、返回值、异常等说明。
+- Comments should include parameter, return value, and exception descriptions.
+
+-- 推荐多语言（中英日）注释。
+- Multilingual (Chinese, English, Japanese) documentation is recommended.

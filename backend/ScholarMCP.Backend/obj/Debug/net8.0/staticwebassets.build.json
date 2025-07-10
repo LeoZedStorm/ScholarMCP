@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "hGcPrIHThOIKm0B0g8p698+5VKwXpxUozJP8KUBhCcY=",
+  "Source": "ScholarMCP.Backend",
+  "BasePath": "_content/ScholarMCP.Backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

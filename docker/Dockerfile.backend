@@ -1,0 +1,10 @@
+# ScholarMCP 后端 Dockerfile / Backend Dockerfile / バックエンド用Dockerfile
+# 这是一个占位文件 / This is a placeholder / これはプレースホルダーです
+
+# FROM mcr.microsoft.com/dotnet/aspnet:7.0
+# WORKDIR /app
+# COPY . .
+# RUN dotnet restore
+# RUN dotnet build
+# EXPOSE 5000
+# CMD ["dotnet", "run"] 
