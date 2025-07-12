@@ -10,6 +10,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "8.0.12",
           "Microsoft.EntityFrameworkCore": "9.0.7",
+          "ModelContextProtocol": "0.3.0-preview.2",
+          "ModelContextProtocol.AspNetCore": "0.3.0-preview.2",
           "Neo4j.Driver": "5.28.2",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "Swashbuckle.AspNetCore": "6.6.2"
@@ -63,6 +65,14 @@
           "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll": {
             "assemblyVersion": "9.0.1.0",
             "fileVersion": "9.0.124.61002"
+          }
+        }
+      },
+      "Microsoft.Extensions.AI.Abstractions/9.6.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.AI.Abstractions.dll": {
+            "assemblyVersion": "9.6.0.0",
+            "fileVersion": "9.600.25.31002"
           }
         }
       },
@@ -123,6 +133,38 @@
           }
         }
       },
+      "Microsoft.Extensions.Diagnostics.Abstractions/8.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.7",
+          "Microsoft.Extensions.Options": "9.0.7"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.7"
+        }
+      },
+      "Microsoft.Extensions.Hosting.Abstractions/8.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.7",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "8.0.1",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.7"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
       "Microsoft.Extensions.Logging/9.0.7": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "9.0.7",
@@ -173,6 +215,43 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
             "assemblyVersion": "1.6.14.0",
             "fileVersion": "1.6.14.0"
+          }
+        }
+      },
+      "ModelContextProtocol/0.3.0-preview.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Hosting.Abstractions": "8.0.1",
+          "ModelContextProtocol.Core": "0.3.0-preview.2"
+        },
+        "runtime": {
+          "lib/net8.0/ModelContextProtocol.dll": {
+            "assemblyVersion": "0.3.0.0",
+            "fileVersion": "0.3.0.0"
+          }
+        }
+      },
+      "ModelContextProtocol.AspNetCore/0.3.0-preview.2": {
+        "dependencies": {
+          "ModelContextProtocol": "0.3.0-preview.2"
+        },
+        "runtime": {
+          "lib/net8.0/ModelContextProtocol.AspNetCore.dll": {
+            "assemblyVersion": "0.3.0.0",
+            "fileVersion": "0.3.0.0"
+          }
+        }
+      },
+      "ModelContextProtocol.Core/0.3.0-preview.2": {
+        "dependencies": {
+          "Microsoft.Extensions.AI.Abstractions": "9.6.0",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.7",
+          "System.IO.Pipelines": "8.0.0",
+          "System.Net.ServerSentEvents": "10.0.0-preview.4.25258.110"
+        },
+        "runtime": {
+          "lib/net8.0/ModelContextProtocol.Core.dll": {
+            "assemblyVersion": "0.3.0.0",
+            "fileVersion": "0.3.0.0"
           }
         }
       },
@@ -257,7 +336,15 @@
           }
         }
       },
-      "System.IO.Pipelines/8.0.0": {}
+      "System.IO.Pipelines/8.0.0": {},
+      "System.Net.ServerSentEvents/10.0.0-preview.4.25258.110": {
+        "runtime": {
+          "lib/net8.0/System.Net.ServerSentEvents.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.25.25910"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -301,6 +388,13 @@
       "path": "microsoft.entityframeworkcore.relational/9.0.1",
       "hashPath": "microsoft.entityframeworkcore.relational.9.0.1.nupkg.sha512"
     },
+    "Microsoft.Extensions.AI.Abstractions/9.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xGO7rHg3qK8jRdriAxIrsH4voNemCf8GVmgdcPXI5gpZ6lZWqOEM4ZO8yfYxUmg7+URw2AY1h7Uc/H17g7X1Kw==",
+      "path": "microsoft.extensions.ai.abstractions/9.6.0",
+      "hashPath": "microsoft.extensions.ai.abstractions.9.6.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
       "type": "package",
       "serviceable": true,
@@ -343,6 +437,27 @@
       "path": "microsoft.extensions.dependencyinjection.abstractions/9.0.7",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512"
     },
+    "Microsoft.Extensions.Diagnostics.Abstractions/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-elH2vmwNmsXuKmUeMQ4YW9ldXiF+gSGDgg1vORksob5POnpaI6caj1Hu8zaYbEuibhqCoWg0YRWDazBY3zjBfg==",
+      "path": "microsoft.extensions.diagnostics.abstractions/8.0.1",
+      "hashPath": "microsoft.extensions.diagnostics.abstractions.8.0.1.nupkg.sha512"
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZbaMlhJlpisjuWbvXr4LdAst/1XxH3vZ6A0BsgTphZ2L4PGuxRLz7Jr/S7mkAAnOn78Vu0fKhEgNF5JO3zfjqQ==",
+      "path": "microsoft.extensions.fileproviders.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.fileproviders.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Hosting.Abstractions/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nHwq9aPBdBPYXPti6wYEEfgXddfBrYC+CQLn+qISiwQq5tpfaqDZSKOJNxoe9rfQxGf1c+2wC/qWFe1QYJPYqw==",
+      "path": "microsoft.extensions.hosting.abstractions/8.0.1",
+      "hashPath": "microsoft.extensions.hosting.abstractions.8.0.1.nupkg.sha512"
+    },
     "Microsoft.Extensions.Logging/9.0.7": {
       "type": "package",
       "serviceable": true,
@@ -377,6 +492,27 @@
       "sha512": "sha512-tTaBT8qjk3xINfESyOPE2rIellPvB7qpVqiWiyA/lACVvz+xOGiXhFUfohcx82NLbi5avzLW0lx+s6oAqQijfw==",
       "path": "microsoft.openapi/1.6.14",
       "hashPath": "microsoft.openapi.1.6.14.nupkg.sha512"
+    },
+    "ModelContextProtocol/0.3.0-preview.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tC4pwKzNPFXFqyqhAcq40QnkSF+md29UKGsaDkF9Pw8oinWqFoC3Nr9AF+YbpIWo8Jc6Nz9S7+LuJwqpZWfLOw==",
+      "path": "modelcontextprotocol/0.3.0-preview.2",
+      "hashPath": "modelcontextprotocol.0.3.0-preview.2.nupkg.sha512"
+    },
+    "ModelContextProtocol.AspNetCore/0.3.0-preview.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YJPTc8UbPOfscs+2xyhwKgw80It17ymxNzupjv4FvM4fPTGQtaKszbgNdzyt3LMUrwX3MUhxWTJtoSHnqji3zA==",
+      "path": "modelcontextprotocol.aspnetcore/0.3.0-preview.2",
+      "hashPath": "modelcontextprotocol.aspnetcore.0.3.0-preview.2.nupkg.sha512"
+    },
+    "ModelContextProtocol.Core/0.3.0-preview.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pM25u8vx2RximQMIU9/b0Nwg201SI4B87wNgaxO3FhAksWFbL7ApRcNdYnyj8qfwEdAY+wIksdYoIBcyb5Aipw==",
+      "path": "modelcontextprotocol.core/0.3.0-preview.2",
+      "hashPath": "modelcontextprotocol.core.0.3.0-preview.2.nupkg.sha512"
     },
     "Neo4j.Driver/5.28.2": {
       "type": "package",
@@ -440,6 +576,13 @@
       "sha512": "sha512-FHNOatmUq0sqJOkTx+UF/9YK1f180cnW5FVqnQMvYUN0elp6wFzbtPSiqbo1/ru8ICp43JM1i7kKkk6GsNGHlA==",
       "path": "system.io.pipelines/8.0.0",
       "hashPath": "system.io.pipelines.8.0.0.nupkg.sha512"
+    },
+    "System.Net.ServerSentEvents/10.0.0-preview.4.25258.110": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5SG8yFN0e6y3VVaCMWSRYdDW15Apzg2LQoYUtl+jFrGb/+RLSMYmIdU9hO1hbHqpU0JD/lfBlCox0FebdAGGOQ==",
+      "path": "system.net.serversentevents/10.0.0-preview.4.25258.110",
+      "hashPath": "system.net.serversentevents.10.0.0-preview.4.25258.110.nupkg.sha512"
     }
   }
 }

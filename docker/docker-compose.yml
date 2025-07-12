@@ -26,21 +26,22 @@ services:
     volumes:
       - neo4jdata:/data
 
-  # backend:
-  #   build:
-  #     context: ./backend/ScholarMCP.Backend
-  #   container_name: scholar_backend
-  #   environment:
-  #     ASPNETCORE_ENVIRONMENT: Development
-  #     ConnectionStrings__PostgresConnection: "Host=postgres;Port=5432;Database=scholarmcp;Username=scholarmcp;Password=scholarmcp"
-  #     Neo4j__Uri: "bolt://neo4j:7687"
-  #     Neo4j__User: "neo4j"
-  #     Neo4j__Password: "scholarmcp"
-  #   depends_on:
-  #     - postgres
-  #     - neo4j
-  #   ports:
-  #     - "5000:8080"
+  backend:
+    build:
+      context: ./backend/ScholarMCP.Backend
+      dockerfile: ../../docker/Dockerfile.backend
+    container_name: scholar_backend
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__PostgresConnection: "Host=postgres;Port=5432;Database=scholarmcp;Username=scholarmcp;Password=scholarmcp"
+      Neo4j__Uri: "bolt://neo4j:7687"
+      Neo4j__User: "neo4j"
+      Neo4j__Password: "scholarmcp"
+    depends_on:
+      - postgres
+      - neo4j
+    ports:
+      - "5000:5000"
 
 volumes:
   pgdata:

@@ -21,6 +21,29 @@
 2. 安装依赖 / Install dependencies / 依存関係をインストール
 3. 启动服务 / Start services / サービスを起動
 
+## Docker 部署 / Docker Deployment / Dockerデプロイ
+
+1. 构建并启动所有服务：
+   ```sh
+   docker-compose up --build
+   ```
+2. 后端服务端口：5000，PostgreSQL：5432，Neo4j：7474/7687
+3. 可通过 docker-compose.yml 和各 Dockerfile 自定义配置。
+
+1. Build and start all services:
+   ```sh
+   docker-compose up --build
+   ```
+2. Backend port: 5000, PostgreSQL: 5432, Neo4j: 7474/7687
+3. You can customize config via docker-compose.yml and Dockerfiles.
+
+1. すべてのサービスをビルド・起動：
+   ```sh
+   docker-compose up --build
+   ```
+2. バックエンド: 5000, PostgreSQL: 5432, Neo4j: 7474/7687
+3. docker-compose.ymlや各Dockerfileで設定をカスタマイズ可能。
+
 ## API 说明 / API Description / API説明
 
 - RESTful API: `/api/rest`

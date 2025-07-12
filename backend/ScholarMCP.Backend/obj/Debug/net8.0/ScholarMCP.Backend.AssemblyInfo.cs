@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ScholarMCP.Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bdca7a48dc692c67fabdcb03151de2f043206266")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2c9a90e0e728cdbca7ec9d434ca1e59cf1db26c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ScholarMCP.Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ScholarMCP.Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

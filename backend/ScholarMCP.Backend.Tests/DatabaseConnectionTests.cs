@@ -1,7 +1,9 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ScholarMCP.Data.Repositories;
+using ScholarMCP.Backend.Extensions;
 using Xunit;
 using Neo4j.Driver;
 
@@ -12,14 +14,27 @@ namespace ScholarMCP.Backend.Tests
     /// </summary>
     public class DatabaseConnectionTests
     {
+        private readonly IServiceProvider _serviceProvider;
+
+        public DatabaseConnectionTests()
+        {
+            // Build configuration
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddEnvironmentVariables()
+                .Build();
+
+            // Register services
+            var services = new ServiceCollection();
+            services.AddPostgresDb(config);
+            services.AddNeo4jDriver(config);
+            _serviceProvider = services.BuildServiceProvider();
+        }
+
         [Fact(DisplayName = "PostgreSQL 连接测试 / PostgreSQL Connection Test / PostgreSQL接続テスト")]
         public void CanConnectToPostgres()
         {
-            var options = new DbContextOptionsBuilder<PostgresDbContext>()
-                .UseNpgsql("Host=localhost;Port=5432;Database=scholarmcp;Username=scholarmcp;Password=scholarmcp")
-                .Options;
-            using var context = new PostgresDbContext(options);
-            // 尝试连接 / Try connect / 接続を試みる
+            var context = _serviceProvider.GetRequiredService<PostgresDbContext>();
             context.Database.OpenConnection();
             Assert.True(context.Database.CanConnect());
             context.Database.CloseConnection();
@@ -28,7 +43,7 @@ namespace ScholarMCP.Backend.Tests
         [Fact(DisplayName = "Neo4j 连接测试 / Neo4j Connection Test / Neo4j接続テスト")]
         public void CanConnectToNeo4j()
         {
-            var provider = new Neo4jDriverProvider("bolt://localhost:7687", "neo4j", "scholarmcp");
+            var provider = _serviceProvider.GetRequiredService<Neo4jDriverProvider>();
             using var session = provider.GetDriver().AsyncSession();
             var result = session.RunAsync("RETURN 1 AS Test").Result;
             Assert.NotNull(result);

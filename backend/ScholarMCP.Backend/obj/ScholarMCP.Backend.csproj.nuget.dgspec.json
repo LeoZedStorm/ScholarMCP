@@ -51,6 +51,14 @@
               "target": "Package",
               "version": "[9.0.7, )"
             },
+            "ModelContextProtocol": {
+              "target": "Package",
+              "version": "[0.3.0-preview.2, )"
+            },
+            "ModelContextProtocol.AspNetCore": {
+              "target": "Package",
+              "version": "[0.3.0-preview.2, )"
+            },
             "Neo4j.Driver": {
               "target": "Package",
               "version": "[5.28.2, )"

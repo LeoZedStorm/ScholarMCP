@@ -1,10 +1,21 @@
 # ScholarMCP 后端 Dockerfile / Backend Dockerfile / バックエンド用Dockerfile
-# 这是一个占位文件 / This is a placeholder / これはプレースホルダーです
+# 支持 .NET 8.0 / Support .NET 8.0 / .NET 8.0対応
 
-# FROM mcr.microsoft.com/dotnet/aspnet:7.0
-# WORKDIR /app
-# COPY . .
-# RUN dotnet restore
-# RUN dotnet build
-# EXPOSE 5000
-# CMD ["dotnet", "run"] 
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+EXPOSE 5000
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ./backend/ScholarMCP.Backend ./ScholarMCP.Backend
+WORKDIR /src/ScholarMCP.Backend
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app/publish --no-restore
+
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+ENV ASPNETCORE_URLS=http://+:5000
+# 可选：设置环境变量 / Optionally set environment variables / 環境変数を設定
+# ENV ASPNETCORE_ENVIRONMENT=Production
+ENTRYPOINT ["dotnet", "ScholarMCP.Backend.dll"] 

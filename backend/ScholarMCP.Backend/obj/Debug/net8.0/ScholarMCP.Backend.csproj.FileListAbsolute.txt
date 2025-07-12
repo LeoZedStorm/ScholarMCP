@@ -48,3 +48,10 @@
 /Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/obj/Debug/net8.0/ScholarMCP.Backend.pdb
 /Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/obj/Debug/net8.0/ScholarMCP.Backend.genruntimeconfig.cache
 /Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/obj/Debug/net8.0/ref/ScholarMCP.Backend.dll
+/Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/bin/Debug/net8.0/Microsoft.Extensions.AI.Abstractions.dll
+/Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll
+/Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/bin/Debug/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll
+/Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/bin/Debug/net8.0/ModelContextProtocol.dll
+/Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/bin/Debug/net8.0/ModelContextProtocol.AspNetCore.dll
+/Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/bin/Debug/net8.0/ModelContextProtocol.Core.dll
+/Users/leo/Code/ScholarMCP/backend/ScholarMCP.Backend/bin/Debug/net8.0/System.Net.ServerSentEvents.dll

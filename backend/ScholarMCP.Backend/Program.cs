@@ -1,61 +1,63 @@
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using ScholarMCP.Backend.Extensions;
+using System.Reflection;
+using ModelContextProtocol.Server;
+using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Add MCP Server with HTTP transport
+builder.Services.AddMcpServer()
+    .WithHttpTransport()
+    .WithToolsFromAssembly();
+
+// PostgreSQL DbContext
+builder.Services.AddPostgresDb(builder.Configuration);
+
+// Neo4j Driver Provider  
+builder.Services.AddNeo4jDriver(builder.Configuration);
+
+// Add Controllers support
+builder.Services.AddControllers();
+
+// Add API documentation support
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// PostgreSQL DbContext
-builder.Services.AddDbContext<ScholarMCP.Data.Repositories.PostgresDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection")));
-
-// Neo4j Driver Provider
-builder.Services.AddSingleton(provider =>
-{
-    var config = builder.Configuration.GetSection("Neo4j");
-    var uri = config["Uri"] ?? throw new InvalidOperationException("Neo4j:Uri is not configured");
-    var user = config["User"] ?? throw new InvalidOperationException("Neo4j:User is not configured");
-    var password = config["Password"] ?? throw new InvalidOperationException("Neo4j:Password is not configured");
-    return new ScholarMCP.Data.Repositories.Neo4jDriverProvider(uri, user, password);
-});
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure Swagger in development
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Configure MCP routes using extension method (符合传统路由模式)
+// 使用扩展方法配置MCP路由（符合传统路由模式）
+// 拡張メソッドを使用してMCPルートを設定（従来のルーティングパターンに準拠）
+app.ConfigureMcpRoutes("/mcp");
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
+// General health check endpoint
+app.MapGet("/health", () => Results.Ok(new 
+{ 
+    status = "healthy",
+    server = "ScholarMCP Server",
+    version = "1.0.0",
+    timestamp = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss UTC"),
+    services = new
+    {
+        mcp = "/mcp/health",
+        api = "/api",
+        docs = "/swagger"
+    }
+}))
+.WithName("GetGeneralHealth")
+.WithTags("Health")
 .WithOpenApi();
 
-app.Run();
+// Map Controllers for RESTful APIs and Agent endpoints
+app.MapControllers();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+app.Run();
